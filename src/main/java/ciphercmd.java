@@ -9,7 +9,7 @@ public class ciphercmd {
     public static void main(String[] args)
         throws IOException
     {
-        final CesarCipher cesar = new CesarCipher(3);
+        final CesarCipher cesar = new CesarCipher(-1);
         final VigenereCipher vigenere = new VigenereCipher();
         final RailFenceCipher railFence = new RailFenceCipher(2);
 
