@@ -11,13 +11,20 @@ public class  BouncingIndex {
         idx = 0;
     };
 
-    public int next( ){
+    /*
+     * TODO mirar esta clase causante del problema
+     */
+    public int next() {
         int result;
         
         if (idx < maxSize){
             result = idx++;
-            }
-        else { idx = 0;  
+        }
+        else if (idx > maxSize) {
+        	result = idx - 1;
+        }
+        else {
+        	idx = 0;
             result =  idx++;
         }
         

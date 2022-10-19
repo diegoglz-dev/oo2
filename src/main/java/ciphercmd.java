@@ -9,9 +9,9 @@ public class ciphercmd {
     public static void main(String[] args)
         throws IOException
     {
-        final CesarCipher cesar = new CesarCipher(-1);
+        final CesarCipher cesar = new CesarCipher(3);
         final VigenereCipher vigenere = new VigenereCipher();
-        final RailFenceCipher railFence = new RailFenceCipher(2);
+        final RailFenceCipher railFence = new RailFenceCipher(3);
 
         // Enter data using BufferReader
         BufferedReader reader = new BufferedReader(

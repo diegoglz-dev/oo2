@@ -45,4 +45,34 @@ public class VigenerCipherTest {
 	public void textWithSpecialCharacterDecryptedTest() {
 		assertEquals("hola@mundo", vigenere.decipher("hpnd@qztkw"));
 	}
+	
+	@Test
+	public void emptyTextEncryptionTest() {
+		assertEquals(" ", vigenere.cipher(" "));
+	}
+	
+	@Test
+	public void emptyTestDecryptedTest() {
+		assertEquals(" ", vigenere.decipher(" "));
+	}
+	
+	@Test
+	public void characterÑEncryption() {
+		assertEquals("ñ", vigenere.cipher("ñ"));
+	}
+	
+	@Test
+	public void characterÑDecryption() {
+		assertEquals("ñ", vigenere.decipher("ñ"));
+	}
+	
+	@Test
+	public void numbersWithCeroJumpEncryptionTest() {
+		assertEquals("123", vigenere.cipher("123"));
+	}
+	
+	@Test
+	public void numbersWithCeroJumpDecryptedTest() {
+		assertEquals("123", vigenere.decipher("123"));
+	}
 }

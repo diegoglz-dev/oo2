@@ -121,10 +121,10 @@ public class CesarCipherTest {
 		assertEquals("holamundo", cesar_s26.decipher("holamundo"));
 	}
 	
-	@Test
+	/*@Test
 	public void simpleTextWithNegativeJumpEncryptionTest() {
 		assertEquals("hola", cesar_smenos1.cipher("gnkz"));
-	}
+	}*/
 	
 	@Test
 	public void numbersWithCeroJumpEncryptionTest() {
@@ -141,7 +141,7 @@ public class CesarCipherTest {
 	 * - Hacer test de cifrado vacio -
 	 * - Hacer test con salto 0 -
 	 * - Hacer test probando ultimas letras del abecedario -
-	 * Hacer test con salto negativo
+	 * Hacer test con salto negativo (Preguntar que debe retornar el test)
 	 * Chequear que es tests de borde
 	 * - Salto de 26 y abecedario de 26 (Que haria pega toda la vuelta) -
 	 * - Test con numeros -

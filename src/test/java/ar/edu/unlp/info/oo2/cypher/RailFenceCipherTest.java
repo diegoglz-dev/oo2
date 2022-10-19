@@ -12,21 +12,21 @@ public class RailFenceCipherTest {
 	
 	@BeforeEach
 	void setUp() {
-		railFence = new RailFenceCipher(2);
+		railFence = new RailFenceCipher(3);
 	}
 	
 	@Test
 	public void simpleTextEncryptedTest() {
-		assertEquals("hlmnooaud", railFence.cipher("holamundo"));
+		assertEquals("qtwrye", railFence.cipher("qwerty"));
 	}
 	
 	@Test
 	public void textWithSpacesEncryptedTest() {
-		assertEquals("hl udoamno", railFence.cipher("hola mundo"));
+		assertEquals("h otoacm saloes", railFence.cipher("hola como estas"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterEncryptionTest() {
-		assertEquals("hl@udoamno", railFence.cipher("hola@mundo"));
+		assertEquals("h@otoacm@saloes", railFence.cipher("hola@como@estas"));
 	}
 }
