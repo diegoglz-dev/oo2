@@ -29,4 +29,19 @@ public class RailFenceCipherTest {
 	public void textWithSpecialCharacterEncryptionTest() {
 		assertEquals("h@otoacm@saloes", railFence.cipher("hola@como@estas"));
 	}
+	
+	@Test
+	public void simpleTextEncryptionTest() {
+		assertEquals("qwerty", railFence.decipher("qtwrye"));
+	}
+	
+	@Test
+	public void textWithSpacesDecryptedTest() {
+		assertEquals("hola como estas", railFence.decipher("h otoacm saloes"));
+	}
+	
+	@Test
+	public void textWithSpecialCharacterDecryptedTest() {
+		assertEquals("hola@como@estas", railFence.decipher("h@otoacm@saloes"));
+	}
 }
