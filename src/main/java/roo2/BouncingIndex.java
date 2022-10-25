@@ -5,30 +5,35 @@ package roo2;
 public class  BouncingIndex {
     int maxSize;
     int idx;
+    int maxSizeAux;
     
     public  BouncingIndex(int size){
-        maxSize= size;
+        maxSize = size;
         idx = 0;
+        maxSizeAux = maxSize;
     };
 
-    /*
-     * TODO mirar esta clase causante del problema
-     */
     public int next() {
         int result;
         
-        if (idx < maxSize){
-            result = idx++;
-        }
-        else if (idx > maxSize) {
-        	result = idx - 1;
-        }
-        else {
-        	idx = 0;
-            result =  idx++;
+        if (maxSizeAux == 0) {
+        	maxSizeAux = maxSize;
+        	idx = 1;
         }
         
-        return result;            
+        if ((idx == maxSize) && (maxSize != 1)) {
+        	maxSizeAux--;
+        	idx--;
+        }
+        
+        if (idx < maxSizeAux) {
+        	result = idx++;
+        } else {
+        	maxSizeAux--;
+        	result = --idx;
+        }
+        
+        return result;
     };
 
 }

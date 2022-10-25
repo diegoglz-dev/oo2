@@ -135,24 +135,4 @@ public class CesarCipherTest {
 	public void numbersWithCeroJumpDecryptedTest() {
 		assertEquals("123", cesar_s3.decipher("123"));
 	}
-	
-	/*
-	 * TODO:
-	 * - Hacer test de cifrado vacio -
-	 * - Hacer test con salto 0 -
-	 * - Hacer test probando ultimas letras del abecedario -
-	 * Hacer test con salto negativo (Preguntar que debe retornar el test)
-	 * Chequear que es tests de borde
-	 * - Salto de 26 y abecedario de 26 (Que haria pega toda la vuelta) -
-	 * - Test con numeros -
-	 * 
-	 * Hay que implementar el descifrado de RailFenceCipher
-	 * 
-	 * Caso de borde en cada cifrador deberian ser distintos porque algunos no dependen del alfabeto
-	 * 
-	 * Proximo sprint: aplicar refactoring (Llevar a reutilizar codigo, pensar como lo implementarian distinto/nuevo) 
-	 * Pensar si quiero agregar un cifrador nuevo cual seria el punto de variabilidad
-	 * 
-	 * Un vigenere cipher con clave de 1 es un cesar cipher
-	 */
 }
