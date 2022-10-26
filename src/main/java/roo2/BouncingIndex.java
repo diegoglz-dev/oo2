@@ -4,33 +4,33 @@ package roo2;
 
 public class  BouncingIndex {
     int maxSize;
-    int idx;
-    int maxSizeAux;
+    int index;
+    int aux;
     
-    public  BouncingIndex(int size){
+    public  BouncingIndex(int size) {
         maxSize = size;
-        idx = 0;
-        maxSizeAux = maxSize;
+        index = 0;
+        aux = maxSize;
     };
 
     public int next() {
         int result;
         
-        if (maxSizeAux == 0) {
-        	maxSizeAux = maxSize;
-        	idx = 1;
+        if (aux == 0) {
+        	aux = maxSize;
+        	index = 1;
         }
         
-        if ((idx == maxSize) && (maxSize != 1)) {
-        	maxSizeAux--;
-        	idx--;
+        if ((index == maxSize) && (maxSize != 1)) {
+        	aux--;
+        	index--;
         }
         
-        if (idx < maxSizeAux) {
-        	result = idx++;
+        if (index < aux) {
+        	result = index++;
         } else {
-        	maxSizeAux--;
-        	result = --idx;
+        	aux--;
+        	result = --index;
         }
         
         return result;
