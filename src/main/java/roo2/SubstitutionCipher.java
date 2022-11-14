@@ -28,20 +28,15 @@ public abstract class SubstitutionCipher implements Cipher {
 	}
 
 	private char cipherOrDecipherChar(char inputChar, boolean cipher) {
-		int offset;
 		char result = inputChar;
 		
 		int index = searchCharacterInAlphabet(inputChar);
 	    
 		if(index >= 0) {
 			if (cipher) {
-				offset = index + this.currentOffset();
-				
-				result = hookCipherChar(offset);
+				result = hookCipherChar(index + this.currentOffset());
 			} else {
-				offset = index - this.currentOffset();
-	            
-				result = hookDecipherChar(offset);
+				result = hookDecipherChar(index - this.currentOffset());
 			}
 		}
 		return result;
