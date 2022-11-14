@@ -44,11 +44,6 @@ public class RailFenceCipherTest {
 	}
 	
 	@Test
-	public void textWithSpacesDecryptedTest2() {
-		assertEquals("qwerty", railFence3.decode("qtwrye",3));
-	}
-	
-	@Test
 	public void textWithSpecialCharacterDecryptedTest() {
 		assertEquals("hola@como@estas", railFence3.decipher("h@otoacm@saloes"));
 	}

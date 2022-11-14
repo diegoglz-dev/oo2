@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import roo2.CesarCipher;
+import roo2.RailFenceCipher;
 import roo2.VigenereCipher;
 
 public class deciphercmd {
@@ -10,6 +11,7 @@ public class deciphercmd {
     {
         final CesarCipher cesar = new CesarCipher(3);
         final VigenereCipher vigenere = new VigenereCipher();
+        final RailFenceCipher railFence = new RailFenceCipher(3);
 
         // Enter data using BufferReader
         BufferedReader reader = new BufferedReader(
@@ -22,6 +24,7 @@ public class deciphercmd {
         System.out.println("Cesar Cipher:"+cesar.decipher(name));
         vigenere.setKeyword("abcdefghijklmnopqrstuvwxyz");
         System.out.println("Vigener Cipher:"+vigenere.decipher(name));
+        System.out.println("RailFence Cipher:"+railFence.decipher(name));
     }
 }
 

@@ -18,14 +18,13 @@ public class CesarCipherTest {
 		cesar_s0 = new CesarCipher(0);
 		cesar_s3 = new CesarCipher(3);
 		cesar_s26 = new CesarCipher(26);
-		cesar_smenos1 = new CesarCipher(-1);
 	}
 	
 	@Test
 	public void simpleTextEncryptedTest() {
 		assertEquals("krodpxqgr", cesar_s3.cipher("holamundo"));
 	}
-	
+	 
 	@Test
 	public void simpleTextDecryptionTest() {
 		assertEquals("holamundo", cesar_s3.decipher("krodpxqgr"));
@@ -120,11 +119,6 @@ public class CesarCipherTest {
 	public void simpleTextWith26JumpDecryptedTest() {
 		assertEquals("holamundo", cesar_s26.decipher("holamundo"));
 	}
-	
-	/*@Test
-	public void simpleTextWithNegativeJumpEncryptionTest() {
-		assertEquals("hola", cesar_smenos1.cipher("gnkz"));
-	}*/
 	
 	@Test
 	public void numbersWithCeroJumpEncryptionTest() {

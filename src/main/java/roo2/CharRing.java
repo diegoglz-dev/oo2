@@ -1,23 +1,18 @@
 package roo2;
 
-//import roo2.Cipher;
-
 public class  CharRing {
-    char[] source;
-    int idx;
+	char[] source;
+	int index;
     
-    public  CharRing(String srcString){
-        source = new char[srcString.length()];
-        srcString.getChars(0,srcString.length(), source, 0);
-        idx = 0;
-    };
+	public CharRing(String srcString) {
+		source = new char[srcString.length()];
+		srcString.getChars(0,srcString.length(), source, 0);
+		index = 0;
+	};
 
-    public char next( ){
-        char result;
-        if(idx >= source.length)
-            idx=0;
-        return source[idx++];     
-        
-    };
-
+	public char next() {
+		if(index >= source.length)
+			index = 0;
+		return source[index++];
+	};
 }
