@@ -11,7 +11,6 @@ public class CesarCipherTest {
 	CesarCipher cesar_s0;
 	CesarCipher cesar_s3;
 	CesarCipher cesar_s26;
-	CesarCipher cesar_smenos1;
 	
 	@BeforeEach
 	void setUp() {
