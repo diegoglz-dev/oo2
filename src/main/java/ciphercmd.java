@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import roo2.BuilderCipher;
 import roo2.CesarCipher;
 import roo2.Encrypter;
 import roo2.VigenereCipher;
@@ -40,15 +42,24 @@ public class ciphercmd {
         vigenere1.setKeyword("abcdefghijklmnopqrstuvwxyz");
         final RailFenceCipher rail1 = (RailFenceCipher) encrypter.getCipher("RailFenceCipher",3);
         
-        String name1 = "qwerty";
-        
-        System.out.println("Cesar Cipher con factory:"+cesar1.cipher(name1));
-        System.out.println("Vigener Cipher con factory:"+vigenere1.cipher(name1));
-        System.out.println("RailFence Cipher con factory:"+rail1.cipher(name1));
+        // String name1 = "qwerty";
+        System.out.println("Cesar Cipher con factory:"+cesar1.cipher(name));
+        System.out.println("Vigener Cipher con factory:"+vigenere1.cipher(name));
+        System.out.println("RailFence Cipher con factory:"+rail1.cipher(name));
         
         final SimpleColumnCipher simpleColumn = new SimpleColumnCipher("hola");
         
         System.out.println("Simple Column Cipher:" + simpleColumn.cipher(name));
+        
+        System.out.println("---- · ----");
+        // Implementación 2 de "Factory"
+        BuilderCipher builderCipher = new BuilderCipher("Cesar,3");
+        CesarCipher cesarloco = (CesarCipher) builderCipher.buildCesarCipher();
+        System.out.println(cesarloco.cipher(name));
+        
+        BuilderCipher builderCipherColumn = new BuilderCipher("SimpleColumn,hola");
+        SimpleColumnCipher simpleColumn1 = (SimpleColumnCipher) builderCipherColumn.buildSimpleColumnCipher();
+        System.out.println(simpleColumn1.cipher(name));
     }
 }
 
