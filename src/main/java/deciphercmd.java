@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import roo2.CesarCipher;
 import roo2.RailFenceCipher;
+import roo2.SimpleColumnCipher;
 import roo2.VigenereCipher;
 
 public class deciphercmd {
@@ -25,6 +26,9 @@ public class deciphercmd {
         vigenere.setKeyword("abcdefghijklmnopqrstuvwxyz");
         System.out.println("Vigener Cipher:"+vigenere.decipher(name));
         System.out.println("RailFence Cipher:"+railFence.decipher(name));
+        
+        final SimpleColumnCipher simpleColumn = new SimpleColumnCipher("hola");
+        System.out.println("Simple Column Cipher:" + simpleColumn.decipher(name));
     }
 }
 

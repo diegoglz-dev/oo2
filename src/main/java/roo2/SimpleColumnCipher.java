@@ -87,8 +87,32 @@ public class SimpleColumnCipher implements Cipher {
 	}
 
 	@Override
-	public String decipher(String message) {
-		// TODO: implementar
-		return null;
+	public String decipher(String inputText) {
+		// Crea array segun el mensaje que viene por parametro
+		char[] message = inputText.toCharArray();
+		// Crea matriz apartir del mensaje
+		char[][] matriz = generarMatrizDelMensaje(message);
+		// Reordenar columnas de acuerdo a posicion de clave respecto al alfabeto
+		ArrayList<Character> keyOrdered = reordenaPalabraClave();
+		// Crea una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
+		char[][] matrizNueva = reordenaMatrizConPalabraClave(message, matriz, keyOrdered);
+		// Retorno un string generado despues de recorrer la matriz
+		return recorrerMatriz(matrizNueva);
+	}
+
+	private char[][] reordenaMatrizConPalabraClave(char[] message, char[][] matriz, ArrayList<Character> keyOrdered) {
+		char[][] matrizNueva = new char[message.length][key.length];
+		for(int i = 0; i < key.length; i++) {
+			for(int j = 0; j < keyOrdered.size(); j++) {
+				if (keyOrdered.get(i) == key[j]) {
+					int oldColum = i;
+					int newColum = j;
+					
+					for (int fila = 0; fila < matriz.length; fila++)
+						matrizNueva[fila][newColum] = matriz[fila][oldColum];
+				}
+			}
+		}
+		return matrizNueva;
 	}
 }
