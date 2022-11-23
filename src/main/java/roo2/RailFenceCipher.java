@@ -14,7 +14,7 @@ public class RailFenceCipher implements Cipher {
 	public String cipher(String inputText){
 		String result = "";
 		char inputChar[] = new char[inputText.length()];
-		inputText.getChars(0,inputText.length(), inputChar, 0);
+		inputText.getChars(0,inputText.length(), inputChar, 0); 
 		for(int index = 0; index < inputText.length(); index++) {
 			int railIndex = bouncingIndex.next();            
 			rails[railIndex] += inputChar[index];

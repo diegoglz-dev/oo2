@@ -5,6 +5,7 @@ import roo2.CesarCipher;
 import roo2.Encrypter;
 import roo2.VigenereCipher;
 import roo2.RailFenceCipher;
+import roo2.SimpleColumnCipher;
 
 public class ciphercmd {
     public static void main(String[] args)
@@ -44,6 +45,10 @@ public class ciphercmd {
         System.out.println("Cesar Cipher con factory:"+cesar1.cipher(name1));
         System.out.println("Vigener Cipher con factory:"+vigenere1.cipher(name1));
         System.out.println("RailFence Cipher con factory:"+rail1.cipher(name1));
+        
+        final SimpleColumnCipher simpleColumn = new SimpleColumnCipher("hola");
+        
+        System.out.println("Simple Column Cipher:" + simpleColumn.cipher(name));
     }
 }
 
