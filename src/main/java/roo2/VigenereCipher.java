@@ -3,7 +3,7 @@ package roo2;
 public class VigenereCipher extends SubstitutionCipher {
 	CharRing keyword;
     
-	public VigenereCipher(String inputAlphabet, String kword) {
+	public VigenereCipher(String kword, String inputAlphabet) {
 		alphabet = new char[inputAlphabet.length()];
 		inputAlphabet.getChars(0,inputAlphabet.length(), alphabet, 0);
 		setKeyword(kword);

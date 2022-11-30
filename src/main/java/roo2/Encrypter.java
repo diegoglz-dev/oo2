@@ -1,28 +1,42 @@
 package roo2;
-
-/**
- * Factory Method.
+/*
+ * Product class
  */
-
 public class Encrypter {
-	
-	public Cipher getCipher(String cipher) {
-		if (cipher.equalsIgnoreCase("CesarCipher")) {
-			return new CesarCipher(1);
-		} else if (cipher.equalsIgnoreCase("RailFenceCipher")) {
-			return new RailFenceCipher(0);
-		} else if (cipher.equalsIgnoreCase("VigenereCipher")) {
-			return new VigenereCipher();
-		}
-		return null;
+	private int jump = 0;
+	private int rails = 0;
+	private String keyword = "";
+	private String alphabet = "";
+
+	public void setJump(int jump) {
+		this.jump = jump;
 	}
 	
-	public Cipher getCipher(String cipher, int n) {
-		if (cipher.equalsIgnoreCase("CesarCipher")) {
-			return new CesarCipher(n);
-		} else if (cipher.equalsIgnoreCase("RailFenceCipher")) {
-			return new RailFenceCipher(n);
-		} 
-		return null;
+	public int getJump() {
+		return jump;
+	}
+
+	public void setRails(int rails) {
+		this.rails = rails;
+	}
+	
+	public int getRails() {
+		return rails;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setAlphabet(String alphabet) {
+		this.alphabet = alphabet;
+	}
+	
+	public String getAlphabet() {
+		return alphabet;
 	}
 }

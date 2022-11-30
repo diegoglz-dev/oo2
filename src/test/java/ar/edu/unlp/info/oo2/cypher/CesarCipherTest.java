@@ -4,19 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import roo2.CesarCipher;
+import roo2.CreatorCipher;
 
 public class CesarCipherTest {
-	CesarCipher cesar_s0;
-	CesarCipher cesar_s3;
-	CesarCipher cesar_s26;
+	CreatorCipher cesar_s0;
+	CreatorCipher cesar_s3;
+	CreatorCipher cesar_s26;
 	
 	@BeforeEach
 	void setUp() {
-		cesar_s0 = new CesarCipher(0);
-		cesar_s3 = new CesarCipher(3);
-		cesar_s26 = new CesarCipher(26);
+		cesar_s0 = new CreatorCipher("CesarCipher,0");
+		cesar_s3 = new CreatorCipher("CesarCipher,3");
+		cesar_s26 = new CreatorCipher("CesarCipher,26");
 	}
 	
 	@Test

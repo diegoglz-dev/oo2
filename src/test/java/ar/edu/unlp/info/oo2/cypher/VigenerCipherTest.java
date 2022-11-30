@@ -5,15 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import roo2.VigenereCipher;
+import roo2.CreatorCipher;
 
 public class VigenerCipherTest {
-	VigenereCipher vigenere;
+	CreatorCipher vigenere;
 	
 	@BeforeEach
 	void setUp() {
-		vigenere = new VigenereCipher();
-		vigenere.setKeyword("abcdefghijklmnopqrstuvwxyz");
+		vigenere = new CreatorCipher("VigenereCipher,abcdefghijklmnopqrstuvwxyz");
 	}
 	
 	@Test

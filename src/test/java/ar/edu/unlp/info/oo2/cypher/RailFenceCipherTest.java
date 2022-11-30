@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import roo2.RailFenceCipher;
+import roo2.CreatorCipher;
 
 public class RailFenceCipherTest {
-	RailFenceCipher railFence3;
-	RailFenceCipher railFence5;
+	CreatorCipher railFence3;
+	CreatorCipher railFence5;
 	
 	@BeforeEach
 	void setUp() {
-		railFence3 = new RailFenceCipher(3);
-		railFence5 = new RailFenceCipher(5);
+		railFence3 = new CreatorCipher("RailFenceCipher,3");
+		railFence5 = new CreatorCipher("RailFenceCipher,5");
 	}
 	
 	@Test

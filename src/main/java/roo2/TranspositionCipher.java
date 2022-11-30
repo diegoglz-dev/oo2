@@ -3,10 +3,10 @@ package roo2;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SimpleColumnCipher implements Cipher {
+public class TranspositionCipher implements Cipher {
 	char[] key;
 	
-	public SimpleColumnCipher(String inputText) {
+	public TranspositionCipher(String inputText) {
 		key = inputText.toCharArray();
 	}
 
