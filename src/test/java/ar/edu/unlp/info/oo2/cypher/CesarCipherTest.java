@@ -20,111 +20,111 @@ public class CesarCipherTest {
 	
 	@Test
 	public void simpleTextEncryptedTest() {
-		assertEquals("krodpxqgr", cesar_s3.cipher("holamundo"));
+		assertEquals("krodpxqgr", cesar_s3.encryptMessage("holamundo"));
 	}
 	 
 	@Test
 	public void simpleTextDecryptionTest() {
-		assertEquals("holamundo", cesar_s3.decipher("krodpxqgr"));
+		assertEquals("holamundo", cesar_s3.decryptMessage("krodpxqgr"));
 	}
 	
 	@Test
 	public void textWithSpacesEncryptedTest() {
-		assertEquals("krod pxqgr", cesar_s3.cipher("hola mundo"));
+		assertEquals("krod pxqgr", cesar_s3.encryptMessage("hola mundo"));
 	}
 	
 	@Test
 	public void textWithSpacesDecryptedTest() {
-		assertEquals("hola mundo", cesar_s3.decipher("krod pxqgr"));
+		assertEquals("hola mundo", cesar_s3.decryptMessage("krod pxqgr"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterEncryptionTest() {
-		assertEquals("krod@pxqgr", cesar_s3.cipher("hola@mundo"));
+		assertEquals("krod@pxqgr", cesar_s3.encryptMessage("hola@mundo"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterDecryptedTest() {
-		assertEquals("hola@mundo", cesar_s3.decipher("krod@pxqgr"));
+		assertEquals("hola@mundo", cesar_s3.decryptMessage("krod@pxqgr"));
 	}
 	
 	@Test
 	public void lastCharactersEncryptedTest() {
-		assertEquals("pdalplcr", cesar_s3.cipher("maximizo"));
+		assertEquals("pdalplcr", cesar_s3.encryptMessage("maximizo"));
 	}
 	
 	@Test
 	public void lastCharactersDecrypted() {
-		assertEquals("maximizo", cesar_s3.decipher("pdalplcr"));
+		assertEquals("maximizo", cesar_s3.decryptMessage("pdalplcr"));
 	}
 	
 	@Test
 	public void simpleTestWithCeroJumpEncryptedTest() {
-		assertEquals("holamundo", cesar_s0.cipher("holamundo"));
+		assertEquals("holamundo", cesar_s0.encryptMessage("holamundo"));
 	}
 	
 	@Test
 	public void simpleTestWithCeroJumpDecrypted() {
-		assertEquals("holamundo", cesar_s0.decipher("holamundo"));
+		assertEquals("holamundo", cesar_s0.decryptMessage("holamundo"));
 	}
 	
 	@Test
 	public void textWithSpacesWithCeroJumpEncryptedTest() {
-		assertEquals("hola mundo", cesar_s0.cipher("hola mundo"));
+		assertEquals("hola mundo", cesar_s0.encryptMessage("hola mundo"));
 	}
 	
 	@Test
 	public void textWithSpacesWithCeroJumpDecryptedTest() {
-		assertEquals("hola mundo", cesar_s0.decipher("hola mundo"));
+		assertEquals("hola mundo", cesar_s0.decryptMessage("hola mundo"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterWithCeroJumpEncryptionTest() {
-		assertEquals("hola@mundo", cesar_s0.cipher("hola@mundo"));
+		assertEquals("hola@mundo", cesar_s0.encryptMessage("hola@mundo"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterWithCeroJumpDecryptedTest() {
-		assertEquals("hola@mundo", cesar_s0.decipher("hola@mundo"));
+		assertEquals("hola@mundo", cesar_s0.decryptMessage("hola@mundo"));
 	}
 	
 	@Test
 	public void emptyTextEncryptionTest() {
-		assertEquals(" ", cesar_s3.cipher(" "));
+		assertEquals(" ", cesar_s3.encryptMessage(" "));
 	}
 	
 	@Test
 	public void emptyTestDecryptedTest() {
-		assertEquals(" ", cesar_s3.decipher(" "));
+		assertEquals(" ", cesar_s3.decryptMessage(" "));
 	}
 	
 	@Test
 	public void characterÑEncryption() {
-		assertEquals("ñ", cesar_s3.cipher("ñ"));
+		assertEquals("ñ", cesar_s3.encryptMessage("ñ"));
 	}
 	
 	@Test
 	public void characterÑDecryption() {
-		assertEquals("ñ", cesar_s3.decipher("ñ"));
+		assertEquals("ñ", cesar_s3.decryptMessage("ñ"));
 	}
 	
 	@Test
 	public void simpleTextWith26JumpEncryptionTest() {
-		assertEquals("holamundo", cesar_s26.cipher("holamundo"));
+		assertEquals("holamundo", cesar_s26.encryptMessage("holamundo"));
 	}
 	
 	@Test
 	public void simpleTextWith26JumpDecryptedTest() {
-		assertEquals("holamundo", cesar_s26.decipher("holamundo"));
+		assertEquals("holamundo", cesar_s26.decryptMessage("holamundo"));
 	}
 	
 	@Test
 	public void numbersWithCeroJumpEncryptionTest() {
-		assertEquals("123", cesar_s3.cipher("123"));
+		assertEquals("123", cesar_s3.encryptMessage("123"));
 	}
 	
 	@Test
 	public void numbersWithCeroJumpDecryptedTest() {
-		assertEquals("123", cesar_s3.decipher("123"));
+		assertEquals("123", cesar_s3.decryptMessage("123"));
 	}
 }

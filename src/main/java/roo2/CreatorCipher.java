@@ -8,13 +8,21 @@ public class CreatorCipher {
 	public CreatorCipher(String inputText) {
 		String[] params = inputText.split(",");
 		if (params[0].equals("CesarCipher")) {
-			setCipherBuilder(new CesarCipherBuilder(params));
+			ConcreteCipherBuilder cesar = new ConcreteCipherBuilder(params);
+			setCipherBuilder(cesar);
+			cesar.buildCesarCipher();
 		} else if (params[0].equals("VigenereCipher")) {
-			setCipherBuilder(new VigenereCipherBuilder(params));
+			ConcreteCipherBuilder vigenere = new ConcreteCipherBuilder(params);
+			setCipherBuilder(vigenere);
+			vigenere.buildVigenereCipher();
 		} else if (params[0].equals("RailFenceCipher")) {
-			setCipherBuilder(new RailFenceCipherBuilder(params));
+			ConcreteCipherBuilder railFence = new ConcreteCipherBuilder(params);
+			setCipherBuilder(railFence);
+			railFence.buildRailFenceCipher();
 		} else if (params[0].equals("TranspositionCipher")) {
-			setCipherBuilder(new TranspositionCipherBuilder(params));
+			ConcreteCipherBuilder trasposition = new ConcreteCipherBuilder(params);
+			setCipherBuilder(trasposition);
+			trasposition.buildTranspositionCipher();
 		}
 	}
 
@@ -26,11 +34,11 @@ public class CreatorCipher {
 		this.cipherBuilder = cipherBuilder;
 	}
 	
-	public String cipher(String message) {
+	public String encryptMessage(String message) {
 		return getCipherBuilder().getRealCipher().cipher(message);
 	}
 	
-	public String decipher(String message) {
+	public String decryptMessage(String message) {
 		return getCipherBuilder().getRealCipher().decipher(message);
 	}
 }

@@ -37,13 +37,13 @@ public class deciphercmd {
         System.out.println("---- · ----");
         System.out.println("---- Builder ----");
         CreatorCipher cesar1 = new CreatorCipher("CesarCipher,3");
-        System.out.println("Cesar: " + cesar1.decipher(name));
+        System.out.println("Cesar: " + cesar1.decryptMessage(name));
         CreatorCipher vigenere1 = new CreatorCipher("VigenereCipher,abcdefghijklmnopqrstuvwxyz");
-        System.out.println("Vigenere: " + vigenere1.decipher(name));
+        System.out.println("Vigenere: " + vigenere1.decryptMessage(name));
         CreatorCipher railFence1 = new CreatorCipher("RailFenceCipher,3");
-        System.out.println("RailFence: " + railFence1.decipher(name));
+        System.out.println("RailFence: " + railFence1.decryptMessage(name));
         CreatorCipher transposition1 = new CreatorCipher("TranspositionCipher,hola");
-        System.out.println("Transposition: " + transposition1.decipher(name));
+        System.out.println("Transposition: " + transposition1.decryptMessage(name));
     }
 }
 

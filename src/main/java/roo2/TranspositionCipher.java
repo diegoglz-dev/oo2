@@ -15,13 +15,13 @@ public class TranspositionCipher implements Cipher {
 		// Crea array segun el mensaje que viene por parametro
 		char[] message = inputText.toCharArray();
 		// Crea matriz apartir del mensaje
-		char[][] matriz = generarMatrizDelMensaje(message);
+		char[][] matriz = generateMatrixOfMessage(message);
 		// Reordenar columnas de acuerdo a posicion de clave respecto al alfabeto
-		ArrayList<Character> keyOrdered = reordenaPalabraClave();
+		ArrayList<Character> keyOrdered = reorderKeyWord();
 		// Crea una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
-		char[][] matrizNueva = reordenaMatrizConPalabraClaveOrdenada(message, matriz, keyOrdered);
+		char[][] matrizNueva = reorderArrayWithKeyWordOrdered(message, matriz, keyOrdered);
 		// Retorno un string generado despues de recorrer la matriz
-		return recorrerMatriz(matrizNueva);
+		return traverseArray(matrizNueva);
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class TranspositionCipher implements Cipher {
 	 * @param keyOrdered
 	 * @return una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
 	 */
-	private char[][] reordenaMatrizConPalabraClaveOrdenada(char[] message, char[][] matriz,
+	private char[][] reorderArrayWithKeyWordOrdered(char[] message, char[][] matriz,
 			ArrayList<Character> keyOrdered) {
 		char[][] matrizNueva = new char[message.length][key.length];
 		for(int i = 0; i < keyOrdered.size(); i++) {
@@ -50,7 +50,7 @@ public class TranspositionCipher implements Cipher {
 	/**
 	 * @return un ArrayList de la palabra clave ordenada segun alfabeto
 	 */
-	private ArrayList<Character> reordenaPalabraClave() {
+	private ArrayList<Character> reorderKeyWord() {
 		ArrayList<Character> keyOrdered = new ArrayList<Character>();
 		
 		for(int i = 0; i < key.length; i++)
@@ -62,7 +62,7 @@ public class TranspositionCipher implements Cipher {
 	 * Crea la matriz a partir del mensaje que viene por parametro
 	 * En este caso es un array del mensaje
 	 */
-	private char[][] generarMatrizDelMensaje(char[] message) {
+	private char[][] generateMatrixOfMessage(char[] message) {
 		char[][] matriz = new char[message.length][key.length];
 		int row = 0, columns = 0;
 		for(int i = 0; i < message.length; i++) {
@@ -77,7 +77,7 @@ public class TranspositionCipher implements Cipher {
 		return matriz;
 	}
 
-	private String recorrerMatriz(char[][] matriz) {
+	private String traverseArray(char[][] matriz) {
 		String result = "";
 		for(int i = 0; i < matriz.length; i++)
 			for (int j = 0; j < key.length; j++) {
@@ -91,16 +91,16 @@ public class TranspositionCipher implements Cipher {
 		// Crea array segun el mensaje que viene por parametro
 		char[] message = inputText.toCharArray();
 		// Crea matriz apartir del mensaje
-		char[][] matriz = generarMatrizDelMensaje(message);
+		char[][] matriz = generateMatrixOfMessage(message);
 		// Reordenar columnas de acuerdo a posicion de clave respecto al alfabeto
-		ArrayList<Character> keyOrdered = reordenaPalabraClave();
+		ArrayList<Character> keyOrdered = reorderKeyWord();
 		// Crea una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
-		char[][] matrizNueva = reordenaMatrizConPalabraClave(message, matriz, keyOrdered);
+		char[][] matrizNueva = reorderArrayWithKeyWord(message, matriz, keyOrdered);
 		// Retorno un string generado despues de recorrer la matriz
-		return recorrerMatriz(matrizNueva);
+		return traverseArray(matrizNueva);
 	}
 
-	private char[][] reordenaMatrizConPalabraClave(char[] message, char[][] matriz, ArrayList<Character> keyOrdered) {
+	private char[][] reorderArrayWithKeyWord(char[] message, char[][] matriz, ArrayList<Character> keyOrdered) {
 		char[][] matrizNueva = new char[message.length][key.length];
 		for(int i = 0; i < key.length; i++) {
 			for(int j = 0; j < keyOrdered.size(); j++) {

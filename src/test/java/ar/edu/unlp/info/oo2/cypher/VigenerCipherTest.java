@@ -17,61 +17,61 @@ public class VigenerCipherTest {
 	
 	@Test
 	public void simpleTextEncryptedTest() {
-		assertEquals("hpndqztkw", vigenere.cipher("holamundo"));
+		assertEquals("hpndqztkw", vigenere.encryptMessage("holamundo"));
 	}
 	
 	@Test
 	public void textWithSpacesEncryptedTest() {
-		assertEquals("hpnd qztkw", vigenere.cipher("hola mundo"));
+		assertEquals("hpnd qztkw", vigenere.encryptMessage("hola mundo"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterEncryptionTest() {
-		assertEquals("hpnd@qztkw", vigenere.cipher("hola@mundo"));
+		assertEquals("hpnd@qztkw", vigenere.encryptMessage("hola@mundo"));
 	}
 	
 	@Test
 	public void simpleTextDecryptionTest() {
-		assertEquals("holamundo", vigenere.decipher("hpndqztkw"));
+		assertEquals("holamundo", vigenere.decryptMessage("hpndqztkw"));
 	}
 	
 	@Test
 	public void textWithSpacesDecryptedTest() {
-		assertEquals("hola mundo", vigenere.decipher("hpnd qztkw"));
+		assertEquals("hola mundo", vigenere.decryptMessage("hpnd qztkw"));
 	}
 	
 	@Test
 	public void textWithSpecialCharacterDecryptedTest() {
-		assertEquals("hola@mundo", vigenere.decipher("hpnd@qztkw"));
+		assertEquals("hola@mundo", vigenere.decryptMessage("hpnd@qztkw"));
 	}
 	
 	@Test
 	public void emptyTextEncryptionTest() {
-		assertEquals(" ", vigenere.cipher(" "));
+		assertEquals(" ", vigenere.encryptMessage(" "));
 	}
 	
 	@Test
 	public void emptyTestDecryptedTest() {
-		assertEquals(" ", vigenere.decipher(" "));
+		assertEquals(" ", vigenere.decryptMessage(" "));
 	}
 	
 	@Test
 	public void characterÑEncryption() {
-		assertEquals("ñ", vigenere.cipher("ñ"));
+		assertEquals("ñ", vigenere.encryptMessage("ñ"));
 	}
 	
 	@Test
 	public void characterÑDecryption() {
-		assertEquals("ñ", vigenere.decipher("ñ"));
+		assertEquals("ñ", vigenere.decryptMessage("ñ"));
 	}
 	
 	@Test
 	public void numbersWithCeroJumpEncryptionTest() {
-		assertEquals("123", vigenere.cipher("123"));
+		assertEquals("123", vigenere.encryptMessage("123"));
 	}
 	
 	@Test
 	public void numbersWithCeroJumpDecryptedTest() {
-		assertEquals("123", vigenere.decipher("123"));
+		assertEquals("123", vigenere.decryptMessage("123"));
 	}
 }
