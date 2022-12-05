@@ -64,13 +64,6 @@ public class TranspositionCipher implements Cipher {
 	 */
 	private char[][] generateMatrixOfMessage(char[] message) {
 		char[][] matriz = new char[message.length][key.length];
-		
-		for (int x=0; x < matriz.length; x++) {
-			  for (int y=0; y < matriz[x].length; y++) {
-				  matriz[x][y] = '*';
-			  }
-		}
-		
 		int row = 0, columns = 0;
 		for(int i = 0; i < message.length; i++) {
 			if (columns >= key.length) {
@@ -81,7 +74,6 @@ public class TranspositionCipher implements Cipher {
 			matriz[row][columns] = message[i];
 			columns++;
 		}
-		
 		return matriz;
 	}
 
@@ -91,7 +83,7 @@ public class TranspositionCipher implements Cipher {
 			for (int j = 0; j < key.length; j++) {
 				result += matriz[i][j];
 			}
-		return result.replace("*", "");
+		return result;
 	}
 
 	@Override
