@@ -1,83 +1,82 @@
 package roo2;
+
 /*
  * Concrete Builder
  */
 public class ConcreteCipherBuilder extends CipherBuilder {
 	
 	public ConcreteCipherBuilder(String[] params) {
-		setEncrypter(new Encrypter());
 		setParams(params);
-		initializeCipher();
 	}
 
 	@Override
-	public void buildJump() {
+	public int buildJump() {
 		try {
-			getEncrypter().setJump(Integer.parseInt(getParams()[1]));
+			return Integer.parseInt(getParams()[1]);
 		} catch ( NumberFormatException e ) {
-			getEncrypter().setJump(0);
+			return 0;
 		}
-		
 	}
 
 	@Override
-	public void buildRails() {
+	public int buildRails() {
 		try {
-			getEncrypter().setRails(Integer.parseInt(getParams()[1]));
+			return Integer.parseInt(getParams()[1]);
 		} catch ( NumberFormatException e ) {
-			getEncrypter().setRails(0);
+			return 0;
 		}
 	}
 
 	@Override
-	public void buildKeyword() {
+	public String buildKeyword() {
 		try {
-			getEncrypter().setKeyword(getParams()[1]);
+			return getParams()[1];
 		} catch ( IndexOutOfBoundsException e ) {
-			getEncrypter().setKeyword(null);
+			return null;
 		}
 	}
 
 	@Override
-	public void buildAlphabet() {
+	public String buildAlphabet() {
 		try {
-			getEncrypter().setAlphabet(getParams()[2]);
+			return getParams()[2];
 		} catch ( IndexOutOfBoundsException e ) {
-			getEncrypter().setAlphabet(null);
+			return null;
 		}
 	}
 
 	@Override
-	public void initializeCipher() {
-		buildJump();
-		buildRails();
-		buildKeyword();
-		buildAlphabet();
-	}
-	
-	public void buildRailFenceCipher() {
-		setRealCipher(new RailFenceCipher(getEncrypter().getRails()));
-	}
-	
-	public void buildCesarCipher() {
-		if (getEncrypter().getAlphabet() != null) {
-			setRealCipher(new CesarCipher(getEncrypter().getJump(), getEncrypter().getAlphabet()));
+	public Cipher builCesarCipher() {
+		if (buildAlphabet() != null) {
+			return new CesarCipher(buildJump(), buildAlphabet());
 		} else {
-			setRealCipher(new CesarCipher(getEncrypter().getJump()));
+			return new CesarCipher(buildJump());
 		}
 	}
 	
-	public void buildVigenereCipher() {
-		if (getEncrypter().getAlphabet() != null) {
-			setRealCipher(new VigenereCipher(getEncrypter().getKeyword(), getEncrypter().getAlphabet()));
+	@Override
+	public Cipher buildRailFenceCipher() {
+		return new RailFenceCipher(buildRails());
+	}
+	
+	@Override
+	public Cipher buildVigenereCipher() {
+		if (buildAlphabet() != null) {
+			return new VigenereCipher(buildKeyword(), buildAlphabet());
 		} else {
 			VigenereCipher vigenere = new VigenereCipher();
-			vigenere.setKeyword(encrypter.getKeyword());
-			setRealCipher(vigenere);
+			vigenere.setKeyword(buildKeyword());
+			return vigenere;
 		}
 	}
+	
+	@Override
+	public Cipher buildTranspositionCipher() {
+		return new TranspositionCipher(buildKeyword());
+	}
 
-	public void buildTranspositionCipher() {
-		setRealCipher(new TranspositionCipher(getEncrypter().getKeyword()));
+	@Override
+	public Cipher buildComplexCipher() {
+		return new ComplexCipher();
 	}
 }

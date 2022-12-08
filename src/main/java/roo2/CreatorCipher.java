@@ -1,44 +1,48 @@
 package roo2;
+
 /*
  * Director Class
  */
 public class CreatorCipher {
-	private CipherBuilder cipherBuilder;
+	private Cipher cipher;
 	
 	public CreatorCipher(String inputText) {
 		String[] params = inputText.split(",");
 		if (params[0].equals("CesarCipher")) {
 			ConcreteCipherBuilder cesar = new ConcreteCipherBuilder(params);
-			setCipherBuilder(cesar);
-			cesar.buildCesarCipher();
+			setCipher(cesar.builCesarCipher());
 		} else if (params[0].equals("VigenereCipher")) {
 			ConcreteCipherBuilder vigenere = new ConcreteCipherBuilder(params);
-			setCipherBuilder(vigenere);
-			vigenere.buildVigenereCipher();
+			setCipher(vigenere.buildVigenereCipher());
 		} else if (params[0].equals("RailFenceCipher")) {
 			ConcreteCipherBuilder railFence = new ConcreteCipherBuilder(params);
-			setCipherBuilder(railFence);
-			railFence.buildRailFenceCipher();
+			setCipher(railFence.buildRailFenceCipher());
 		} else if (params[0].equals("TranspositionCipher")) {
 			ConcreteCipherBuilder trasposition = new ConcreteCipherBuilder(params);
-			setCipherBuilder(trasposition);
-			trasposition.buildTranspositionCipher();
+			setCipher(trasposition.buildTranspositionCipher());
+		} else if (params[0].equals("ComplexCipher")) {
+			ConcreteCipherBuilder complex = new ConcreteCipherBuilder(params);
+			setCipher(complex.buildComplexCipher());
 		}
 	}
-
-	public CipherBuilder getCipherBuilder() {
-		return cipherBuilder;
-	}
-
-	public void setCipherBuilder(CipherBuilder cipherBuilder) {
-		this.cipherBuilder = cipherBuilder;
-	}
 	
+	public void addCipher(Cipher newCipher) {
+		((ComplexCipher) cipher).addCipher(newCipher);
+	}
+
+	public Cipher getCipher() {
+		return cipher;
+	}
+
+	public void setCipher(Cipher cipher) {
+		this.cipher = cipher;
+	}
+
 	public String encryptMessage(String message) {
-		return getCipherBuilder().getRealCipher().cipher(message);
+		return cipher.cipher(message);
 	}
 	
 	public String decryptMessage(String message) {
-		return getCipherBuilder().getRealCipher().decipher(message);
+		return cipher.decipher(message);
 	}
 }
