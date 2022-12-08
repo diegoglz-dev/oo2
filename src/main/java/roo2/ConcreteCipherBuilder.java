@@ -3,12 +3,21 @@ package roo2;
 /*
  * Concrete Builder
  */
-public class ConcreteCipherBuilder extends CipherBuilder {
+public class ConcreteCipherBuilder implements CipherBuilder {
+	protected String[] params;
 	
 	public ConcreteCipherBuilder(String[] params) {
 		setParams(params);
 	}
-
+	
+	public void setParams(String[] params) {
+		this.params = params;
+	}
+	
+	public String[] getParams() {
+		return params;
+	}
+	
 	@Override
 	public int buildJump() {
 		try {
@@ -45,7 +54,6 @@ public class ConcreteCipherBuilder extends CipherBuilder {
 		}
 	}
 
-	@Override
 	public Cipher builCesarCipher() {
 		if (buildAlphabet() != null) {
 			return new CesarCipher(buildJump(), buildAlphabet());
@@ -54,12 +62,10 @@ public class ConcreteCipherBuilder extends CipherBuilder {
 		}
 	}
 	
-	@Override
 	public Cipher buildRailFenceCipher() {
 		return new RailFenceCipher(buildRails());
 	}
 	
-	@Override
 	public Cipher buildVigenereCipher() {
 		if (buildAlphabet() != null) {
 			return new VigenereCipher(buildKeyword(), buildAlphabet());
@@ -70,12 +76,10 @@ public class ConcreteCipherBuilder extends CipherBuilder {
 		}
 	}
 	
-	@Override
 	public Cipher buildTranspositionCipher() {
 		return new TranspositionCipher(buildKeyword());
 	}
 
-	@Override
 	public Cipher buildComplexCipher() {
 		return new ComplexCipher();
 	}

@@ -22,7 +22,7 @@ public class CreatorCipher {
 			setCipher(trasposition.buildTranspositionCipher());
 		} else if (params[0].equals("ComplexCipher")) {
 			ConcreteCipherBuilder complex = new ConcreteCipherBuilder(params);
-			setCipher(complex.buildComplexCipher());
+			setCipher(complex.buildComplexCipher()); // CesarCipher,3,RailFence,6,CesarCipher,3,ABDSCSDSDASDWDWDAFAS
 		}
 	}
 	

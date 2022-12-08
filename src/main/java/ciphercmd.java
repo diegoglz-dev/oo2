@@ -54,20 +54,23 @@ public class ciphercmd {
         CreatorCipher vigenere1 = new CreatorCipher("VigenereCipher,abcdefghijklmnopqrstuvwxyz");
         System.out.println("Vigenere: " + vigenere1.encryptMessage(name));
         CreatorCipher railFence1 = new CreatorCipher("RailFenceCipher,3");
-        System.out.println("RailFence: " + railFence1.encryptMessage(name));
+        System.out.println("RailFence: " + railFence1.encryptMessage(name));*/
         CreatorCipher transposition1 = new CreatorCipher("TranspositionCipher,hola");
-        System.out.println("Transposition: " + transposition1.encryptMessage(name));*/
+        System.out.println("Transposition: " + transposition1.encryptMessage(name));
         
         /*List<Cipher> list = new ArrayList<Cipher>();
         list.add(cesar);
         list.add(railFence);*/
         
-        CesarCipher cesar = (CesarCipher) new CreatorCipher("CesarCipher,3").getCipher();
-        RailFenceCipher railFence = (RailFenceCipher) new CreatorCipher("RailFenceCipher,3").getCipher();
+        //CesarCipher cesar = (CesarCipher) new CreatorCipher("CesarCipher,3").getCipher();
+        //RailFenceCipher railFence = (RailFenceCipher) new CreatorCipher("RailFenceCipher,3").getCipher();
+        //VigenereCipher vigenere = (VigenereCipher) new CreatorCipher("VigenereCipher,abcdefghijklmnopqrstuvwxyz").getCipher();
+        //TranspositionCipher transposition = (TranspositionCipher) new CreatorCipher("TranspositionCipher,hola").getCipher();
         CreatorCipher complex = new CreatorCipher("ComplexCipher");
-        complex.addCipher(cesar);
-        complex.addCipher(railFence);
-        System.out.println("Complex: " + complex.encryptMessage(name)); // k grdpqrox
+        complex.addCipher(new CreatorCipher("CesarCipher,3").getCipher());
+        complex.addCipher(new CreatorCipher("RailFenceCipher,3").getCipher());
+        //complex.addCipher(vigenere);
+        System.out.println("Complex: " + complex.encryptMessage(name));
     }
 }
 
