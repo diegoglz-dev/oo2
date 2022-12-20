@@ -25,29 +25,6 @@ public class TranspositionCipher implements Cipher {
 	}
 
 	/**
-	 * @param message
-	 * @param matriz
-	 * @param keyOrdered
-	 * @return una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
-	 */
-	private char[][] reorderArrayWithKeyWordOrdered(char[] message, char[][] matriz,
-			ArrayList<Character> keyOrdered) {
-		char[][] matrizNueva = new char[message.length][key.length];
-		for(int i = 0; i < keyOrdered.size(); i++) {
-			for(int j = 0; j < key.length; j++) {
-				if (keyOrdered.get(i) == key[j]) {
-					int newColum = i;
-					int oldColum = j;
-					
-					for (int fila = 0; fila < matriz.length; fila++)
-						matrizNueva[fila][newColum] = matriz[fila][oldColum];
-				}
-			}
-		}
-		return matrizNueva;
-	}
-
-	/**
 	 * @return un ArrayList de la palabra clave ordenada segun alfabeto
 	 */
 	private ArrayList<Character> reorderKeyWord() {
@@ -64,6 +41,14 @@ public class TranspositionCipher implements Cipher {
 	 */
 	private char[][] generateMatrixOfMessage(char[] message) {
 		char[][] matriz = new char[message.length][key.length];
+		
+		// Rellena con * la matriz
+		/*for (int x=0; x < matriz.length; x++) {
+			  for (int y=0; y < matriz[x].length; y++) {
+				  matriz[x][y] = '*';
+			  }
+		}*/
+		
 		int row = 0, columns = 0;
 		for(int i = 0; i < message.length; i++) {
 			if (columns >= key.length) {
@@ -74,6 +59,7 @@ public class TranspositionCipher implements Cipher {
 			matriz[row][columns] = message[i];
 			columns++;
 		}
+		
 		return matriz;
 	}
 
@@ -83,7 +69,8 @@ public class TranspositionCipher implements Cipher {
 			for (int j = 0; j < key.length; j++) {
 				result += matriz[i][j];
 			}
-		return result;
+		//return result;
+		return result.replace("*", "");
 	}
 
 	@Override
@@ -99,20 +86,49 @@ public class TranspositionCipher implements Cipher {
 		// Retorno un string generado despues de recorrer la matriz
 		return traverseArray(matrizNueva);
 	}
+	
+	/**
+	 * @param message
+	 * @param matriz
+	 * @param keyOrdered
+	 * @return una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
+	 */
+	private char[][] reorderArrayWithKeyWordOrdered(char[] message, char[][] matriz,
+			ArrayList<Character> keyOrdered) {
+		char[][] matrizNueva = new char[message.length][key.length];
+		for(int i = 0; i < keyOrdered.size(); i++) {
+			for(int j = 0; j < key.length; j++) {
+				if (keyOrdered.get(i) == key[j]) {
+					reorderIndexes(matriz, matrizNueva, i, j);
+				}
+			}
+		}
+		return matrizNueva;
+	}
 
 	private char[][] reorderArrayWithKeyWord(char[] message, char[][] matriz, ArrayList<Character> keyOrdered) {
 		char[][] matrizNueva = new char[message.length][key.length];
 		for(int i = 0; i < key.length; i++) {
 			for(int j = 0; j < keyOrdered.size(); j++) {
 				if (keyOrdered.get(i) == key[j]) {
-					int oldColum = i;
-					int newColum = j;
-					
-					for (int fila = 0; fila < matriz.length; fila++)
-						matrizNueva[fila][newColum] = matriz[fila][oldColum];
+					reorderIndexes(matriz, matrizNueva, j, i);
 				}
 			}
 		}
 		return matrizNueva;
+	}
+	
+	/**
+	 * @param matriz
+	 * @param matrizNueva
+	 * @param i
+	 * @param j
+	 */
+	private void reorderIndexes(char[][] matriz, char[][] matrizNueva, int i, int j) {
+		int newColum = i;
+		int oldColum = j;
+		
+		for (int fila = 0; fila < matriz.length; fila++)
+			matrizNueva[fila][newColum] = matriz[fila][oldColum];
 	}
 }
