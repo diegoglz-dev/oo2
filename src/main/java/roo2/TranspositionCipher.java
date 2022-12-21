@@ -40,14 +40,16 @@ public class TranspositionCipher implements Cipher {
 	 * En este caso es un array del mensaje
 	 */
 	private char[][] generateMatrixOfMessage(char[] message) {
-		char[][] matriz = new char[message.length % key.length + 1][key.length];
+		int lentext = message.length;
+		int lenkey = key.length;
+		char[][] matriz = new char[(int) Math.ceil((double) lentext / lenkey)][lenkey];
 		
 		// Rellena con * la matriz
-		/*for (int x=0; x < matriz.length; x++) {
+		for (int x=0; x < matriz.length; x++) {
 			  for (int y=0; y < matriz[x].length; y++) {
 				  matriz[x][y] = '*';
 			  }
-		}*/
+		}
 		
 		int row = 0, columns = 0;
 		for(int i = 0; i < message.length; i++) {
@@ -75,7 +77,6 @@ public class TranspositionCipher implements Cipher {
 
 	@Override
 	public String decipher(String inputText) {
-		System.out.println(inputText.length());
 		// Crea array segun el mensaje que viene por parametro
 		char[] message = inputText.toCharArray();
 		// Crea matriz apartir del mensaje

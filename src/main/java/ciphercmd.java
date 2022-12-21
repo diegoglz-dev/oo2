@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import roo2.ComplexCipher;
 import roo2.CreatorCipher;
 
 public class ciphercmd {
@@ -19,8 +18,6 @@ public class ciphercmd {
         CreatorCipher complex = new CreatorCipher("ComplexCipher");
         complex.addCipher(new CreatorCipher("CesarCipher,3").getCipher());
         complex.addCipher(new CreatorCipher("RailFenceCipher,3").getCipher());
-        // Si no tuvieramos metodo addCipher en clase Director
-        // ((ComplexCipher) complex.getCipher()).addCipher(new CreatorCipher("CesarCipher,3").getCipher());
         // Printing the read line
         System.out.println("Complex: " + complex.encryptMessage(name));
         
