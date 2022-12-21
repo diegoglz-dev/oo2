@@ -72,7 +72,6 @@ public class TranspositionCipher implements Cipher {
 				result += matriz[i][j];
 			}
 		return result;
-		//return result.replace("*", "");
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class TranspositionCipher implements Cipher {
 		// Crea una nueva matriz ordenada en columnas segun la palabra clave ordenada segun alfabeto
 		char[][] matrizNueva = reorderArrayWithKeyWord(message, matriz, keyOrdered);
 		// Retorno un string generado despues de recorrer la matriz
-		return traverseArray(matrizNueva);
+		return traverseArray(matrizNueva).replace("*", "");
 	}
 	
 	/**
@@ -109,7 +108,9 @@ public class TranspositionCipher implements Cipher {
 	}
 
 	private char[][] reorderArrayWithKeyWord(char[] message, char[][] matriz, ArrayList<Character> keyOrdered) {
-		char[][] matrizNueva = new char[message.length][key.length];
+		int lentext = message.length;
+		int lenkey = key.length;
+		char[][] matrizNueva = new char[(int) Math.ceil((double) lentext / lenkey)][lenkey];
 		for(int i = 0; i < key.length; i++) {
 			for(int j = 0; j < keyOrdered.size(); j++) {
 				if (keyOrdered.get(i) == key[j]) {
